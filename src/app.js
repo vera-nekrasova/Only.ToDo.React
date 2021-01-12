@@ -1,22 +1,54 @@
 import React from 'react';
 import Header from './components/Header';
 import Task from './components/Task';
-import Popup from "./components/Popup"
-
+import PopupAdd from "./components/Popups/popupAdd"
+import PopupEdit from "./components/Popups/popupEdit"
 
 export default function (props) {
 	const [showDelTask, setShowDelTask] = React.useState(false);
-	const [showPopupEdit, setShowPopupEdit] = React.useState(false);
+	const [showPopup, setShowPopup] = React.useState('');
 	const [list, setList] = React.useState([]);
 	const [textChangeTask, setTextChangeTask] = React.useState('');
 	const [changeIndexTask, setChangeIndexTask] = React.useState('');
+	const [changeList, setChangeList] = React.useState(false);
+
+	let popup;
+	let isList;
+
+	switch (showPopup) {
+		case 'add':
+			popup = <PopupAdd
+				close={closePopup}
+				addTask={addTask}
+			/>;
+			break;
+		case 'edit':
+			popup = <PopupEdit
+				close={closePopup}
+				textTask={textChangeTask}
+				rewriteTask={rewriteTask}
+				changeTask={changeTask} />;
+			break;
+		default: popup = '';
+	}
+
+	if (list.length > 0) {
+		isList = <Task showDel={showDelTask}
+				list={list}
+				removeTask={removeTask}
+				getChangeTask={getChangeTask}
+				showPopup={()=>setShowPopup('edit')}/>
+	} else {
+		isList = <div className="main__empty-list">Список задач пуст</div>;
+	}
+
 
 	function  getDelTask (value) {
 		setShowDelTask(value);
 	}
 
-	function  showPopup (value) {
-		setShowPopupEdit(value);
+	function closePopup() {
+		setShowPopup('');
 	}
 
 	function  addTask (value) {
@@ -47,13 +79,18 @@ export default function (props) {
 	return (
 		<>
 			<div className="container">
-				<Header getDelTask={getDelTask} showDelTask={showDelTask} />
+				<Header getDelTask={getDelTask}
+					showDelTask={showDelTask}
+					list={list}
+					show={changeList}/>
+				
 				<main className="main">
-					<div className={`main__empty-list ${list.length == 0 ? '' : 'hide'}`}>Список задач пуст</div>
-					<Task showDel={showDelTask} showPopup={showPopup} list={list} removeTask={ removeTask} getChangeTask={ getChangeTask }/>
+					{isList}
+					<div className="btn-add" onClick={() => setShowPopup('add')}>+</div>
 				</main>
 			</div>
-			<Popup showPopupEdit={showPopupEdit} showPopup={showPopup} addTask={addTask} textTask={textChangeTask} rewriteTask={rewriteTask} changeTask={changeTask}/>
+
+			{popup}
 		</>
 	)
 }

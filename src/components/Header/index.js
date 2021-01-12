@@ -5,7 +5,7 @@ const Header = (props) => {
     const [change, setChange] = React.useState(true);
 
     function changeText () {
-        if (change) {
+        if (change && props.list.length > 0) {
             setChange(false);
             setText('Отменить');
             props.getDelTask(true);

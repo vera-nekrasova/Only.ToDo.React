@@ -54,11 +54,6 @@
     }
 }
 
-.hide-popup {
-    opacity: 0;
-    transform: translateY(100%);
-}
-
 .btn-add {
     position: fixed;
     width: 60px;
@@ -84,10 +79,5 @@
 		transform: translate(-50%, 0%);
 		transition: transform 0.5s ease 0s;
 		left: 50%;
-	}
-
-	.hide-popup {
-		opacity: 0;
-		transform: translateY(500%);
 	}
 }
