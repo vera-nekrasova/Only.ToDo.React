@@ -4,10 +4,13 @@ import Task from '../components/Task';
 import PopupAdd from "../components/Popups/popupAdd";
 import PopupEdit from "../components/Popups/popupEdit";
 import { connect } from 'react-redux';
+import { showPopupAdd } from '../TodoActions';
 
-const mapStateToProps = ({ todos, popupEdit }) => ({ ...todos, ...popupEdit });
 
-const ToDo = ({ todos, popupEdit }) => {
+const mapStateToProps = ({ todos, popupEdit, popupAdd }) => ({ ...todos, ...popupEdit, ...popupAdd });
+const mapDispatchToProps = ({ showPopupAdd });
+
+const ToDo = ({ todos, popupEdit, popupAdd, showPopupAdd }) => {
 	const [showDelTask, setShowDelTask] = React.useState(false);
 	const [showPopup, setShowPopup] = React.useState('');
 	const [list, setList] = React.useState([]);
@@ -16,25 +19,12 @@ const ToDo = ({ todos, popupEdit }) => {
 	const [changeList, setChangeList] = React.useState(false);
 
 	let popup;
-	let isList;
 
 	if (popupEdit) {
 			popup = <PopupEdit/>;
+	} else if (popupAdd) {
+		popup = <PopupAdd/>
 	}
-// 	popup = <PopupAdd
-// 	close={closePopup}
-// 	addTask={addTask}
-// />;
-		// case 'edit':
-
-		// 	break;
-
-	if (todos.length > 0) {
-		isList = <Task/>
-	} else {
-		isList = <div className="main__empty-list">Список задач пуст</div>;
-	}
-
 
 	function getDelTask(value) {
 		setShowDelTask(value);
@@ -75,8 +65,8 @@ const ToDo = ({ todos, popupEdit }) => {
 				<Header/>
 				
 				<main className="main">
-					{isList}
-					<div className="btn-add" onClick={() => setShowPopup('add')}>+</div>
+					<Task/>
+					<div className="btn-add" onClick={() => showPopupAdd()}>+</div>
 				</main>
 			</div>
 
@@ -85,4 +75,4 @@ const ToDo = ({ todos, popupEdit }) => {
 	)
 }
 
-export default connect(mapStateToProps)(ToDo);
+export default connect(mapStateToProps,mapDispatchToProps)(ToDo);

@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { showPopupEdit } from '../.././TodoActions';
+import { showPopupEdit, getTask } from '../.././TodoActions';
 
-const mapDispatchToProps = { showPopupEdit };
+const mapStateToProps = ({ todos, popupEdit, popupAdd }) => ({ ...todos, ...popupEdit, ...popupAdd });
+const mapDispatchToProps = { showPopupEdit, getTask };
 
-const PopupEdit = ({ showPopupEdit }) => {
-	console.log(showPopupEdit);
+const PopupEdit = ({ showPopupEdit, getTask }) => {
 	// function changeTask() {
 	// 	if (props.textTask.trim()) {
 	// 		props.changeTask(props.textTask);
@@ -18,8 +18,8 @@ const PopupEdit = ({ showPopupEdit }) => {
 		<div className="popup popup_edit-task">
 			<div className="container">
 				<input className="popup__inp popup__inp_edit-task" type="text"
-					// value={props.textTask}
-					// 	onChange={(e) => props.rewriteTask(e.target.value)}
+					value={getTask()}
+						// onChange={(e) => props.rewriteTask(e.target.value)}
 					/>
 				<div className="popup__row">
 					<div className="popup__btn-close" onClick={()=>showPopupEdit()}>Закрыть</div>
@@ -31,4 +31,4 @@ const PopupEdit = ({ showPopupEdit }) => {
 	)
 }
 
-export default connect(null, mapDispatchToProps)(PopupEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(PopupEdit);

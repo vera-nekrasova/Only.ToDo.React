@@ -1,4 +1,4 @@
-import { TODO_ADD, TODO_REMOVE, TODO_EDIT, DEL_CIRCLE, SHOW_POPUP_EDIT } from "./types";
+import { TODO_ADD, TODO_REMOVE, TODO_EDIT, DEL_CIRCLE, SHOW_POPUP_EDIT, SHOW_POPUP_ADD, GET_TASK } from "./types";
 
 export const addTodo = data => ({
 	type: TODO_ADD,
@@ -22,6 +22,15 @@ export const setDelCircle = () => ({
 	type: DEL_CIRCLE
 })
 
-export const showPopupEdit = () => ({
-	type: SHOW_POPUP_EDIT
+export const showPopupEdit = (id) => ({
+	type: SHOW_POPUP_EDIT,
+	payload: id
+})
+
+export const showPopupAdd = () => ({
+	type: SHOW_POPUP_ADD
+})
+
+export const getTask = () => ({
+	type: GET_TASK
 })

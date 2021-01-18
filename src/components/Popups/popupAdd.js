@@ -1,14 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { showPopupAdd, addTodo } from '../../TodoActions';
 
-const PopupAdd = (props) => {
+const mapDispatchToProps = { showPopupAdd, addTodo };
+
+const PopupAdd = ({showPopupAdd, addTodo}) => {
 	const [task, setTask] = React.useState('');
-
-	function getTask() {
-		if (task.trim()) {
-			props.addTask(task);
-		}
-		props.close();
-	}
 
 	return (
 		<>
@@ -18,8 +15,8 @@ const PopupAdd = (props) => {
 					onChange={(e) => setTask(e.target.value)}
 					/>
 				<div className="popup__row">
-					<div className="popup__btn-close" onClick={()=>props.close()}>Закрыть</div>
-					<div className="popup__btn-add" onClick={getTask}>Добавить</div>
+					<div className="popup__btn-close" onClick={()=>showPopupAdd()}>Закрыть</div>
+						<div className="popup__btn-add" onClick={() => addTodo(task)}>Добавить</div>
 				</div>
 			</div>
 		</div>			
@@ -27,4 +24,4 @@ const PopupAdd = (props) => {
 	)
 }
 
-export default PopupAdd
+export default connect(null, mapDispatchToProps)(PopupAdd);
