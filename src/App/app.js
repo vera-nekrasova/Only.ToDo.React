@@ -1,10 +1,13 @@
 import React from 'react';
-import Header from './components/Header';
-import Task from './components/Task';
-import PopupAdd from "./components/Popups/popupAdd"
-import PopupEdit from "./components/Popups/popupEdit"
+import Header from '../components/Header';
+import Task from '../components/Task';
+import PopupAdd from "../components/Popups/popupAdd";
+import PopupEdit from "../components/Popups/popupEdit";
+import { connect } from 'react-redux';
 
-export default function (props) {
+const mapStateToProps = ({ todos, popupEdit }) => ({ ...todos, ...popupEdit });
+
+const ToDo = ({ todos, popupEdit }) => {
 	const [showDelTask, setShowDelTask] = React.useState(false);
 	const [showPopup, setShowPopup] = React.useState('');
 	const [list, setList] = React.useState([]);
@@ -15,35 +18,25 @@ export default function (props) {
 	let popup;
 	let isList;
 
-	switch (showPopup) {
-		case 'add':
-			popup = <PopupAdd
-				close={closePopup}
-				addTask={addTask}
-			/>;
-			break;
-		case 'edit':
-			popup = <PopupEdit
-				close={closePopup}
-				textTask={textChangeTask}
-				rewriteTask={rewriteTask}
-				changeTask={changeTask} />;
-			break;
-		default: popup = '';
+	if (popupEdit) {
+			popup = <PopupEdit/>;
 	}
+// 	popup = <PopupAdd
+// 	close={closePopup}
+// 	addTask={addTask}
+// />;
+		// case 'edit':
 
-	if (list.length > 0) {
-		isList = <Task showDel={showDelTask}
-				list={list}
-				removeTask={removeTask}
-				getChangeTask={getChangeTask}
-				showPopup={()=>setShowPopup('edit')}/>
+		// 	break;
+
+	if (todos.length > 0) {
+		isList = <Task/>
 	} else {
 		isList = <div className="main__empty-list">Список задач пуст</div>;
 	}
 
 
-	function  getDelTask (value) {
+	function getDelTask(value) {
 		setShowDelTask(value);
 	}
 
@@ -51,11 +44,11 @@ export default function (props) {
 		setShowPopup('');
 	}
 
-	function  addTask (value) {
+	function addTask(value) {
 		setList(prevState => [...prevState, { task: value }]);
 	}
 
-	function  removeTask (index) {
+	function removeTask(index) {
 		setList(list.filter((item, i) => i !== index));
 	}
 
@@ -79,10 +72,7 @@ export default function (props) {
 	return (
 		<>
 			<div className="container">
-				<Header getDelTask={getDelTask}
-					showDelTask={showDelTask}
-					list={list}
-					show={changeList}/>
+				<Header/>
 				
 				<main className="main">
 					{isList}
@@ -94,3 +84,5 @@ export default function (props) {
 		</>
 	)
 }
+
+export default connect(mapStateToProps)(ToDo);

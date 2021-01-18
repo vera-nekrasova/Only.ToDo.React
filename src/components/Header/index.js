@@ -1,27 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setDelCircle } from '../.././TodoActions';
 
-const Header = (props) => {
-    const [text, setText] = React.useState('Править');
-    const [change, setChange] = React.useState(true);
+const mapStateToProps = ({ todos, delCircle, textHeaderBtn }) => ({ ...todos, ...delCircle, ...textHeaderBtn });
 
-    function changeText () {
-        if (change && props.list.length > 0) {
-            setChange(false);
-            setText('Отменить');
-            props.getDelTask(true);
-        } else {
-            setChange(true);
-            setText('Править');
-            props.getDelTask(false);
-        }
-    }
+const mapDispatchToProps = { setDelCircle };
 
+const Header = ({  textHeaderBtn, setDelCircle }) => {
     return (
         <header className="header">
             <span className="header__data">Сегодня</span>
-            <div className="header__btn" onClick={ changeText }>{ text }</div>
+            <div className="header__btn" onClick={() => setDelCircle()}>{ textHeaderBtn }</div>
         </header>
     )
 }
 
-export default Header
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
