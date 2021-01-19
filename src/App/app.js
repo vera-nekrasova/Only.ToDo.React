@@ -11,14 +11,7 @@ const mapStateToProps = ({ todos, popupEdit, popupAdd }) => ({ ...todos, ...popu
 const mapDispatchToProps = ({ showPopupAdd });
 
 const ToDo = ({ todos, popupEdit, popupAdd, showPopupAdd }) => {
-	const [showDelTask, setShowDelTask] = React.useState(false);
-	const [showPopup, setShowPopup] = React.useState('');
-	const [list, setList] = React.useState([]);
-	const [textChangeTask, setTextChangeTask] = React.useState('');
-	const [changeIndexTask, setChangeIndexTask] = React.useState('');
-	const [changeList, setChangeList] = React.useState(false);
-
-	let popup;
+	let popup = '';
 
 	if (popupEdit) {
 			popup = <PopupEdit/>;
@@ -26,44 +19,10 @@ const ToDo = ({ todos, popupEdit, popupAdd, showPopupAdd }) => {
 		popup = <PopupAdd/>
 	}
 
-	function getDelTask(value) {
-		setShowDelTask(value);
-	}
-
-	function closePopup() {
-		setShowPopup('');
-	}
-
-	function addTask(value) {
-		setList(prevState => [...prevState, { task: value }]);
-	}
-
-	function removeTask(index) {
-		setList(list.filter((item, i) => i !== index));
-	}
-
-	function getChangeTask(index) {
-		setTextChangeTask(list[index].task);
-		setChangeIndexTask(index);
-	}
-
-	function rewriteTask(text) {
-		setTextChangeTask(text);
-	}
-
-	function changeTask(text) {
-		list.map((item, i) => {
-			if (i == changeIndexTask) {
-				item.task = text
-			}
-		})
-	}
-
 	return (
 		<>
 			<div className="container">
 				<Header/>
-				
 				<main className="main">
 					<Task/>
 					<div className="btn-add" onClick={() => showPopupAdd()}>+</div>

@@ -2,18 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {removeTodo, showPopupEdit} from '../.././TodoActions'
 
-const mapStateToProps = ({ todos, delCircle }) => ({ ...todos, ...delCircle });
+const mapStateToProps = ({ todos }) => ({ todos });
 const mapDispatchToProps = { removeTodo, showPopupEdit };
 
-const Task = ({ todos, delCircle, removeTodo, showPopupEdit }) => {
+const Task = ({ todos, removeTodo, showPopupEdit }) => {
 	return (
 		<>
 			{
-				todos.length > 0 ? 			
-				([...todos].map((item, index) => 
+				todos.todos.length > 0 ? 			
+				([...todos.todos].map((item, index) => 
 					< label className="task" key={index}>
 						<input className="checkbox" type="checkbox" />
-						{delCircle ?
+						{todos.delCircle ?
 							<span
 								className={"task__circle task__circle_del-task"}
 								onClick={() => removeTodo(item.id)}></span> :
