@@ -2,6 +2,82 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# The project structure:
+ ```
+Only.ToDo.React
+├── README.md
+├── package-lock.json
+├── package.json
+├── .gitignore
+├── .eslintcache
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── index.js
+    ├── index.scss
+    ├── TodoActions.js
+    ├── TodoReduser.js
+    ├── types.js
+    ├── App
+    |   ├── app.js
+    |   ├── rootReduser.js
+    │   └── store.js
+    ├── components
+    |   ├── Header
+    |   |   ├── index.js
+    │   |   └── header.scss
+    |   ├── Popups
+    |   |   ├── popup.scss
+    |   |   ├── popupAdd.js
+    │   |   └── popupEdit.js
+    |   └── Task
+    |       ├── index.js
+    │       └── task.scss
+    ├── scss
+    |   ├── colors.scss
+    |   ├── components.scss
+    |   ├── fonts.scss
+    │   └── mixins.scss
+    └── fonts
+        ├── Gilroy-Bold.eot
+        ├── Gilroy-Bold.ttf
+        ├── Gilroy-Bold.woff
+        ├── Gilroy-Bold.woff2
+        ├── Gilroy-BoldItalic.eot
+        ├── Gilroy-BoldItalic.ttf
+        ├── Gilroy-BoldItalic.woff
+        ├── Gilroy-BoldItalic.woff2
+        ├── Gilroy-Extrabold.eot
+        ├── Gilroy-Extrabold.ttf
+        ├── Gilroy-Extrabold.woff
+        ├── Gilroy-Extrabold.woff2
+        ├── Gilroy-ExtraboldItalic.eot
+        ├── Gilroy-ExtraboldItalic.ttf
+        ├── Gilroy-ExtraboldItalic.woff
+        ├── Gilroy-ExtraboldItalic.woff2
+        ├── Gilroy-Medium.eot
+        ├── Gilroy-Medium.ttf
+        ├── Gilroy-Medium.woff
+        ├── Gilroy-Medium.woff2
+        ├── Gilroy-MediumItalic.eot
+        ├── Gilroy-MediumItalic.ttf
+        ├── Gilroy-MediumItalic.woff
+        ├── Gilroy-MediumItalic.woff2
+        ├── Gilroy-Regular.eot
+        ├── Gilroy-Regular.ttf
+        ├── Gilroy-Regular.woff
+        ├── Gilroy-Regular.woff2
+        ├── Gilroy-RegularItalic.eot
+        ├── Gilroy-RegularItalic.ttf
+        ├── Gilroy-RegularItalic.woff
+        └── Gilroy-RegularItalic.woff2
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
