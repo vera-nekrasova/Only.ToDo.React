@@ -6,7 +6,7 @@ const mapStateToProps = ({ todos }) => ({ todos });
 const mapDispatchToProps = { showPopupEdit, editTodo };
 
 const PopupEdit = ({ todos, showPopupEdit, editTodo }) => {
-	let task = todos.todos.find(index => index.id == todos.editTaskId).title;
+	let task = todos.todos.find(index => index.id === todos.editTaskId).title;
 	const [titleTask, setTitleTask] = React.useState(task);
 	
 	return (

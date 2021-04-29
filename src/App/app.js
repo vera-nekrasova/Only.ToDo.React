@@ -10,7 +10,7 @@ import { showPopupAdd } from '../TodoActions';
 const mapStateToProps = ({ todos, popupEdit, popupAdd }) => ({ ...todos, ...popupEdit, ...popupAdd });
 const mapDispatchToProps = ({ showPopupAdd });
 
-const ToDo = ({ todos, popupEdit, popupAdd, showPopupAdd }) => {
+const ToDo = ({ popupEdit, popupAdd, showPopupAdd }) => {
 	let popup = '';
 
 	if (popupEdit) {

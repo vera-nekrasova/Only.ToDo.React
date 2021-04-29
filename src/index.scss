@@ -1,6 +1,7 @@
 @import './scss/colors';
 @import './scss/mixins.scss';
 @import './scss/components';
+@import './scss/fonts';
 
 body {
     position: relative;
@@ -9,6 +10,8 @@ body {
     margin: 0;
     color: #1C1C1C;
 	overflow: hidden;
+    font-family: 'Gilroy';
+    font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, ul, li {
@@ -34,6 +37,6 @@ input:focus, textarea:focus {
 
 .main {
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 400;
     text-align: left;
 }

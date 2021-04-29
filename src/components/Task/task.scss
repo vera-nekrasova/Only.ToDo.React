@@ -12,7 +12,10 @@
     display: none;
 
     &:checked~.task__circle_check::after {
-        background-color: #23A3FF;
+        background-color: $blue;
+    }
+    &:checked~.task__text{
+        opacity: 0.7;
     }
 }
 
@@ -22,9 +25,10 @@
 	border-radius: 50%;
 	margin-right: 14px;
     display: block;
+    line-height: 21px;
     
     &_check {
-        border: 2px solid #D9D9D9;
+        border: 2px solid $light-grey;
         position: relative;
 
         &::after {
@@ -42,13 +46,13 @@
     /* -----del-task------- */
 
     &_del-task {
-        background: #E85C5C;
+        background: $red;
         text-align: center;
         transition: all 0.3s linear 0s;
         
         &::after {
             content: '-';
-            color: #FFFFFF;
+            color: $white;
             font-weight: 600;
         }
     }

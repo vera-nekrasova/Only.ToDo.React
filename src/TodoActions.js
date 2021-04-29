@@ -1,4 +1,4 @@
-import { TODO_ADD, TODO_REMOVE, TODO_EDIT, DEL_CIRCLE, SHOW_POPUP_EDIT, SHOW_POPUP_ADD, GET_TASK, EDIT_TASK } from "./types";
+import { TODO_ADD, TODO_REMOVE, TODO_EDIT, DEL_CIRCLE, SHOW_POPUP_EDIT, SHOW_POPUP_ADD, GET_TASK } from "./types";
 
 export const addTodo = data => ({
 	type: TODO_ADD,

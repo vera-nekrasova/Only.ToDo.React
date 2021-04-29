@@ -16,7 +16,7 @@ const PopupAdd = ({showPopupAdd, addTodo}) => {
 					/>
 				<div className="popup__row">
 					<div className="popup__btn-close" onClick={()=>showPopupAdd()}>Закрыть</div>
-						<div className="popup__btn-add" onClick={() => addTodo(task)}>Добавить</div>
+					<div className="popup__btn-add" onClick={() => addTodo(task)}>Добавить</div>
 				</div>
 			</div>
 		</div>			

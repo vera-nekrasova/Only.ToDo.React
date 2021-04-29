@@ -4,7 +4,7 @@
 	height: calc(100% - 149px);
 	left: 0px;
 	top: 149px;
-	background: #FFFFFF;
+	background: $white;
 	box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 	border-radius: 40px 40px 0px 0px;
 	padding: 40px 0 0 0;
@@ -16,12 +16,12 @@
     
     &__inp {
         width: 100%;
-        border: 2px solid #E6E6E6;
+        border: 2px solid $light-grey;
         border-radius: 10px;
         margin-bottom: 30px;
         font-weight: 500;
         font-size: 16px;
-        color: #333333;
+        color: $dark-grey;
         padding: 20px;
     }
 
@@ -42,14 +42,14 @@
     }
 
     &__btn-close {
-        background: #F2F2F2;
+        background: $btn-col;
         margin-right: 21px;
         @include btn();
     }
 
     &__btn-add, &__btn-save {
-        background: #23A3FF;
-        color: #FFFFFF;
+        background: $blue;
+        color: $white;
         @include btn();
     }
 }
@@ -59,14 +59,15 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #FFFFFF;
+    background: $white;
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
-    color: #23A3FF;
+    color: $blue;
     font-size: 53px;
     text-align: center;
     right: 40px;
     bottom: 40px;
-    cursor: pointer;
+    cursor: pointer;    
+    line-height: 60px;
 }
 
 

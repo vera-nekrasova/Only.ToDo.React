@@ -12,7 +12,8 @@ const Task = ({ todos, removeTodo, showPopupEdit }) => {
 				todos.todos.length > 0 ? 			
 				([...todos.todos].map((item, index) => 
 					< label className="task" key={index}>
-						<input className="checkbox" type="checkbox" />
+						<input className="checkbox" type="checkbox"
+							disabled={todos.delCircle ? true : false} />
 						{todos.delCircle ?
 							<span
 								className={"task__circle task__circle_del-task"}
